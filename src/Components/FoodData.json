@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "pizza",
+        "rating": "4.3",
+        "img": "/offer/pizza1.jpg",
+        "price": "100.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 2,
+        "name": "biscuit",
+        "rating": "4.3",
+        "img": "/offer/biscuit.png",
+        "price": "201.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 3,
+        "name": "fries",
+        "rating": "4.3",
+        "img": "/offer/fries.png",
+        "price": "121.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 4,
+        "name": "burger",
+        "rating": "4.3",
+        "img": "/offer/burger1.jpg",
+        "price": "1221.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 5,
+        "name": "pizza",
+        "rating": "4.3",
+        "img": "/offer/pizza1.jpg",
+        "price": "5421.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 6,
+        "name": "biscuit",
+        "rating": "4.3",
+        "img": "/offer/biscuit.png",
+        "price": "8721.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 7,
+        "name": "fries",
+        "rating": "4.3",
+        "img": "/offer/fries.png",
+        "price": "9021.00",
+        "tax": "5%",
+        "quantity": "2"
+    },
+    {
+        "id": 8,
+        "name": "burger",
+        "rating": "4.3",
+        "img": "/offer/burger1.jpg",
+        "price": "80000.00",
+        "tax": "5%",
+        "quantity": "2"
+    }
+]
