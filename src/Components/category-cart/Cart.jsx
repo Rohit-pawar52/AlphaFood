@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
+import Swal from "sweetalert2";
 
 function Cart() {
   const [foods, setFoods] = useState([]);
+  // console.log(foods)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,8 +22,14 @@ function Cart() {
 
   const calculateTotals = useMemo(() => {
     const deliveryFee = 20;
-    const allSubtotal = foods.reduce((total, food) => total + food.price * food.quantity, 0);
-    const allDiscount = foods.reduce((total, food) => total + food.price * food.quantity * 0.05, 0);
+    const allSubtotal = foods.reduce(
+      (total, food) => total + food.price * food.quantity,
+      0
+    );
+    const allDiscount = foods.reduce(
+      (total, food) => total + food.price * food.quantity * 0.05,
+      0
+    );
     const totalPrice = allSubtotal - allDiscount + deliveryFee;
     return { allSubtotal, allDiscount, totalPrice };
   }, [foods]);
@@ -35,28 +43,38 @@ function Cart() {
     }
   };
 
+
+  // to navigate to the checkout page 
+  const navigate = useNavigate();
+  function toCheckOut(e){
+    navigate("/CheckOut", { state: {calculateTotals, foods }})
+  }
+
   return (
     <>
-      <div className="bg-[url('/offer/category.jpg')] bg-cover bg-no-repeat bg-center w-full">
-        <div className="font-extrabold p-2 md:p-8">
-          <p className="text-2xl">Category</p>
-          <div className="flex text-[#654040]">
-            <Link to="/" className="hover:text-gray-400">
-              Home /
-            </Link>
-            <Link to="/Category" className="px-2 hover:text-gray-400">
-              Category /
-            </Link>
-            <p>Cart</p>
+      <div className="relative bg-[url('/offer/category.webp')] bg-no-repeat bg-cover bg-center w-full h-32 md:h-44">
+        <div
+          className="absolute top-0 left-0 w-full z-20"
+          style={{ backgroundColor: `rgba(0,0,0,0.7)` }}
+        >
+          <div className="grid place-items-center md:place-items-start text-white p-3 md:px-28 py-8 md:py-14">
+            <p className="text-3xl relative z-50 font-bold">Cart</p>
+            <div className="flex text-xl">
+              <Link to="/">Home / </Link>{" "}
+              <Link to="/Category" className="px-2">
+                Category /{" "}
+              </Link>{" "}
+              <p className="text-[#b69f9f]">Cart</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="grid gap-5 md:flex md:justify-center md:gap-20 md:mx-16 my-5 px-2">
+      <div className="grid md:flex h-fit md:mx-24 gap-5 md:my-12 my-6  md:px-0">
         <div className="w-full md:w-[70%]">
-          <table className="min-w-full text-left">
+          <table className="max-w-full md:min-w-full text-left md:border-spacing-5 border-separate ">
             <thead>
-              <tr className="border-b-2">
+              <tr>
                 <th>Image</th>
                 <th>Product</th>
                 <th>Price</th>
@@ -74,7 +92,7 @@ function Cart() {
                       <img
                         src={food.img}
                         alt={food.name}
-                        className="w-12 h-12 md:w-20 md:h-20 rounded-md"
+                        className="w-12 h-12 md:w-16 md:h-16 rounded-md"
                       />
                     </td>
                     <td className="font-bold">{food.name}</td>
@@ -95,9 +113,9 @@ function Cart() {
           </table>
         </div>
 
-        <div className="border-2 py-5 w-full md:w-[30%] rounded-md px-2">
+        <div className="border py-5 w-full h-fit md:w-[30%] rounded-md px-1 md:px-2">
           <p className="text-2xl font-bold">Cart Total</p>
-          <p>Price Details</p>
+          <p className="font-bold">Price Details</p>
           {foods.length > 0 && (
             <>
               <div className="flex justify-between">
@@ -116,12 +134,14 @@ function Cart() {
                 <p>Total Amount</p>
                 <p>&#8377; {Math.round(calculateTotals.totalPrice)}</p>
               </div>
-              <button
-                onClick={() => alert("Thanks For Purchasing")}
-                className="w-full border py-2 rounded-md bg-slate-600 text-center mt-2 text-white"
-              >
-                Proceed to buy
-              </button>
+
+              {/* <Link to="/CheckOut"> */}
+                <button 
+                onClick={toCheckOut}
+                className="w-full border py-2 rounded-md bg-slate-600 text-center mt-2 text-white">
+                  Proceed to buy
+                </button>
+              {/* </Link> */}
             </>
           )}
         </div>

@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from "react";;
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TbAlpha } from "react-icons/tb";
 import { CiLocationOn } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
 import { CiShop } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { FaBars } from "react-icons/fa";
-function Navbar() {
+import Sidebar from "./Sidebar";
+import { IoMdPower } from "react-icons/io";
 
+function Navbar() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [foods, setFoods] = useState([]);
+  const navigate = useNavigate();
+  const count = foods.length;
+  const userData = JSON.parse(localStorage.getItem("user"));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get("http://localhost:3001/api/foods");
         setFoods(res.data);
+        // console.log(res.data)
       } catch (err) {
         console.log("Error fetching food data:", err);
       }
@@ -23,18 +30,20 @@ function Navbar() {
     fetchData();
   }, []);
 
-//   const data = foods.map((data) => data.id)
-// console.log(data)
+   // Toggle sidebar for mobile devices
+   const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <>
     <div className="flex justify-between items-center px-5">
       <div className="lg:hidden">
-      <FaBars className="text-3xl" />
+      <FaBars className="text-3xl" onClick={toggleSidebar}/>
       </div>
       <Link to="/">
       <div className="flex justify-center items-center font-bold">
-        <TbAlpha className="text-5xl md:text-7xl md:mt-3"/>
+        <TbAlpha className="text-6xl md:text-7xl md:mt-2 me-[-5px]"/>
         <div className="leading-5 md:leading-3">
           <p className="md:text-4xl">ALPHA<span className="md:hidden">FOOD</span></p>
           <p className="hidden md:block">FOOD PLATINUM</p>
@@ -42,8 +51,12 @@ function Navbar() {
         </div>
       </div>
       </Link>
-      <div className="lg:hidden">
-            <CiShoppingCart className="text-4xl" />
+      <div className="lg:hidden relative">
+           <Link to="/cart"> <CiShoppingCart className="text-4xl" /></Link>
+           { userData ? (
+             <p className="absolute flex items-center justify-center w-5 h-5 rounded-full bg-red-500 top-[-8px] right-[-10px]">{count}</p>
+           ) : ""
+           }
           </div>
       <div className="hidden lg:flex items-center border p-2 rounded-md">
         <div className="flex">
@@ -57,16 +70,42 @@ function Navbar() {
       <div className="hidden buttons lg:flex gap-5 items-center">
         <div className="hidden  xl:flex border p-2 rounded-md border-pink-500  text-pink-500">
           <CiShop className="text-2xl" />
-          <p>Add Restaurent</p>
+          <Link to="/AddRestro">Add Restaurent</Link>
         </div>
         <div className="flex gap-5">
-          <div className="flex gap-2">
-            <CiShoppingCart className="text-2xl" />
-            <p>cart</p>
+        <Link to="/cart"> <div className="flex gap-2">
+        { userData ?(
+          <div className="relative">
+          
+          <CiShoppingCart className="text-2xl" />
+          <p className="absolute flex items-center justify-center w-5 h-5 rounded-full bg-red-500 top-[-10px] right-[-10px]">{count}</p>
           </div>
-          <div>Login</div>
-          <div>|</div>
-          <div>Register</div>
+        ): <CiShoppingCart className="text-2xl" />
+      }
+          { userData ? (
+            ""
+          ) :
+            <p>cart</p>
+          }
+          </div>
+          </Link>
+          <div>
+            {
+              userData ?(
+                <div className="flex justify-center items-center gap-2" >
+                  <img src={ userData.avatar_url } alt="" className="w-6 h-6 rounded-full"/>
+                  <IoMdPower
+                  onClick={() => {
+                    localStorage.removeItem("user");
+                    navigate("/");
+                  }}
+                />
+                </div>
+              ) : (<div className="flex gap-2"><Link to="/UserLogin">Login</Link><p>|</p>
+                <Link to="/UserRegister">Register</Link></div>)
+            }
+          
+          </div>
         </div>
       </div>
     </div>
@@ -79,6 +118,11 @@ function Navbar() {
     <CiShop className="hidden sm:block text-2xl" /><input type="text" placeholder="Search for restaurent" className="outline-none text-sm text-center" />
     </div>
   </div>
+
+  {/* Sidebar for mobile */}
+  {isSidebarOpen && (
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      )}
     </>
   );
 }

@@ -11,7 +11,7 @@ function HomePage() {
     </div>
 
       <Slider/>
-      <Offercard />
+      <Offercard/>
       <Restaurent/>
     </>
   );
