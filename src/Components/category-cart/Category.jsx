@@ -28,7 +28,7 @@ function Category() {
       if (categorydata) {
         try {
           const res = await axios.post(
-            "http://localhost:3001/api/foods",
+            "https://alpha-food.vercel.app/api/foods",
             categorydata
           );
           navigate("/Cart");
@@ -55,7 +55,7 @@ function Category() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/foods");
+        const res = await axios.get("https://alpha-food.vercel.app/api/foods");
         setStored(res.data);
       } catch (err) {
         console.log("Error fetching food data:", err);

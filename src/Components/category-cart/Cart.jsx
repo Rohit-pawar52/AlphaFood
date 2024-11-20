@@ -11,7 +11,7 @@ function Cart() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/foods");
+        const res = await axios.get("https://alpha-food.vercel.app/api/foods");
         setFoods(res.data);
       } catch (err) {
         console.log("Error fetching food data:", err);
@@ -36,7 +36,7 @@ function Cart() {
 
   const handleDelete = async (foodId) => {
     try {
-      await axios.delete(`http://localhost:3001/api/foods/${foodId}`);
+      await axios.delete(`https://alpha-food.vercel.app/api/foods/${foodId}`);
       setFoods((prevFoods) => prevFoods.filter((food) => food.id !== foodId));
     } catch (error) {
       console.error("Error deleting item:", error);
