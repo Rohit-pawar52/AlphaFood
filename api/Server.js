@@ -3,34 +3,35 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001; // Use process.env.PORT for Vercel
 
 app.use(cors());
 app.use(express.json());
 
 require("dotenv").config();
 
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("Connected to MongoDB Atlas"))
-.catch((error) => console.error("Could not connect to MongoDB Atlas:", error));
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  connectTimeoutMS: 10000, // 10 seconds timeout
+})
+  .then(() => console.log("Connected to MongoDB Atlas"))
+  .catch((error) => console.error("Could not connect to MongoDB Atlas:", error));
 
-// mongoose.connect("mongodb://localhost:27017/AlphaFood")
-// .then(() => console.log("Connected to MongoDB"))
-// .catch((error) => console.error("Could not connect to MongoDB:", error));
-
+// Schema and Model
 const foodSchema = new mongoose.Schema({
   id: String,
   name: String,
   rating: String,
   img: String,
-  price: Number, 
-  tax: Number, 
-  quantity: Number, 
+  price: Number,
+  tax: Number,
+  quantity: Number,
   subtotal: Number,
 });
 
 const foodData = mongoose.model("Food", foodSchema);
 
+// API Endpoints
 app.get("/api/foods", async (req, res) => {
   try {
     const foods = await foodData.find();
@@ -66,6 +67,7 @@ app.delete("/api/foods/:id", async (req, res) => {
   }
 });
 
+// Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });

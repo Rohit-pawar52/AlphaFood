@@ -2,7 +2,6 @@ import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-import Swal from "sweetalert2";
 
 function Cart() {
   const [foods, setFoods] = useState([]);
