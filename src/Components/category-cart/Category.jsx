@@ -81,7 +81,7 @@ function Category() {
           className="absolute top-0 left-0 w-full z-20"
           style={{ backgroundColor: `rgba(0,0,0,0.7)` }}
         >
-          <div className="grid place-items-center md:place-items-start text-white p-4 md:px-28 py-8 md:py-14">
+          <div className="grid place-items-center sm:place-items-start text-white p-4 md:px-20 lg:px-28 xl:px-32 py-8 md:py-14">
             <p className="text-3xl relative z-50 font-bold">Category</p>
             <div className="flex text-xl">
               <Link to="/">Home / </Link>{" "}
@@ -91,15 +91,15 @@ function Category() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-2 md:px-28 py-5 px-2 md:py-10">
+      <div className="grid sm:grid-cols-2 sm:pe-16 md:px-20 lg:px-28 xl:px-32 py-5 px-2 md:py-10">
         <div className="text-3xl font-bold py-2 text-center md:text-left md:py-0 p-2 md:p-0">
           Products
         </div>
-        <div className="flex md:justify-end justify-center gap-8 md:gap-3 items-center">
+        <div className="flex justify-center sm:justify-end gap-5 sm:gap-3 items-center">
           <select
             name="Sort By"
             id="food"
-            className="border p-2 rounded-md outline-none"
+            className="border p-2 text-[14px] sm:text-base rounded-md outline-none"
           >
             <option value="sort">Sort By</option>
             <option value="veg">Veg Only</option>
@@ -108,18 +108,18 @@ function Category() {
           <select
             name="Sort By"
             id="food"
-            className="border p-2 rounded-md outline-none"
+            className="border p-2 text-[14px] sm:text-base rounded-md outline-none"
           >
             <option value="sort">Show</option>
           </select>
           <IoGrid
-            className={`border h-10 w-10 p-2 rounded-md text-2xl cursor-pointer ${
+            className={`border w-8 h-8 sm:h-10 sm:w-10 p-2 rounded-md text-xl sm:text-2xl cursor-pointer ${
               view === "grid" ? "text-red-500 border-red-500" : ""
             }`}
             onClick={() => setView("grid")}
           />
           <IoList
-            className={`border h-10 w-10 p-2 rounded-md text-3xl cursor-pointer ${
+            className={`border w-8 h-8 sm:h-10 sm:w-10 p-2 rounded-md text-xl sm:text-3xl cursor-pointer ${
               view === "list" ? "text-red-500 border-red-500" : ""
             }`}
             onClick={() => setView("list")}

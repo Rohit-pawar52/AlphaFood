@@ -8,9 +8,15 @@ const PORT = 3001;
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/AlphaFood")
-.then(() => console.log("Connected to MongoDB"))
-.catch((error) => console.error("Could not connect to MongoDB:", error));
+require("dotenv").config();
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("Connected to MongoDB Atlas"))
+.catch((error) => console.error("Could not connect to MongoDB Atlas:", error));
+
+// mongoose.connect("mongodb://localhost:27017/AlphaFood")
+// .then(() => console.log("Connected to MongoDB"))
+// .catch((error) => console.error("Could not connect to MongoDB:", error));
 
 const foodSchema = new mongoose.Schema({
   id: String,

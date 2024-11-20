@@ -37,8 +37,8 @@ function Navbar() {
 
   return (
     <>
-    <div className="flex justify-between items-center px-5">
-      <div className="lg:hidden">
+    <div className="flex justify-between items-center px-2 lg:px-10">
+      <div className="md:hidden">
       <FaBars className="text-3xl" onClick={toggleSidebar}/>
       </div>
       <Link to="/">
@@ -51,7 +51,9 @@ function Navbar() {
         </div>
       </div>
       </Link>
-      <div className="lg:hidden relative">
+
+      {/* for mobile cart */}
+      <div className="md:hidden relative">
            <Link to="/cart"> <CiShoppingCart className="text-4xl" /></Link>
            { userData ? (
              <p className="absolute flex items-center justify-center w-5 h-5 rounded-full bg-red-500 top-[-8px] right-[-10px]">{count}</p>
@@ -59,16 +61,16 @@ function Navbar() {
            }
           </div>
       <div className="hidden lg:flex items-center border p-2 rounded-md">
-        <div className="flex">
+        <div className="flex items-center gap-2">
           <CiLocationOn className="text-2xl" /> <input type="text" placeholder="Search Location" className="outline-none"/>
         </div>
           <p className="me-5">|</p>
-        <div className="flex">
+        <div className="flex items center gap-2">
           <CiSearch className="text-2xl" /><input type="text" placeholder="Search For Restaurent" className="outline-none" />
         </div>
       </div>
-      <div className="hidden buttons lg:flex gap-5 items-center">
-        <div className="hidden  xl:flex border p-2 rounded-md border-pink-500  text-pink-500">
+      <div className="hidden md:flex gap-5 items-center">
+        <div className="hidden md:flex lg:hidden xl:flex border p-2 rounded-md border-pink-500  text-pink-500">
           <CiShop className="text-2xl" />
           <Link to="/AddRestro">Add Restaurent</Link>
         </div>
@@ -109,13 +111,13 @@ function Navbar() {
         </div>
       </div>
     </div>
-    <div className="lg:hidden flex justify-between border p-2 mx-5 my-1 rounded-md">
-    <div className="flex gap-4">
-    <CiSearch className="hidden sm:block text-2xl" /> <input type="text" placeholder="Search Location" className="outline-none text-sm"/>
+    <div className="lg:hidden flex justify-between border p-2 mx-2  md:mx-5 my-1 rounded-md">
+    <div className="sm:flex gap-4">
+    <CiSearch className="hidden sm:block text-2xl" /> <input type="text" placeholder="Search Location" className="outline-none text-[12px] sm:text-sm"/>
     </div>
     <p className="">|</p>
-    <div className="flex gap-4">
-    <CiShop className="hidden sm:block text-2xl" /><input type="text" placeholder="Search for restaurent" className="outline-none text-sm text-center" />
+    <div className="sm:flex gap-4">
+    <CiShop className="hidden sm:block text-2xl" /><input type="text" placeholder="Search for restaurent" className="outline-none text-[12px] sm:text-sm text-center" />
     </div>
   </div>
 

@@ -22,7 +22,6 @@ function Slider() {
     <Swiper
       modules={[Navigation, Autoplay]}
       spaceBetween={10}
-      // slidesPerView={7}
       breakpoints={{
         400: {
           slidesPerView: 2,

@@ -57,7 +57,7 @@ function Cart() {
           className="absolute top-0 left-0 w-full z-20"
           style={{ backgroundColor: `rgba(0,0,0,0.7)` }}
         >
-          <div className="grid place-items-center md:place-items-start text-white p-3 md:px-28 py-8 md:py-14">
+          <div className="grid place-items-center sm:place-items-start text-white p-2 lg:p-4 lg:px-28 xl:px-32 py-8 md:py-14">
             <p className="text-3xl relative z-50 font-bold">Cart</p>
             <div className="flex text-xl">
               <Link to="/">Home / </Link>{" "}
@@ -70,11 +70,11 @@ function Cart() {
         </div>
       </div>
 
-      <div className="grid md:flex h-fit md:mx-24 gap-5 md:my-12 my-6  md:px-0">
-        <div className="w-full md:w-[70%]">
-          <table className="max-w-full md:min-w-full text-left md:border-spacing-5 border-separate ">
+      <div className="grid lg:flex h-fit lg:mx-24 gap-5 md:my-12 my-6  md:px-0">
+        <div className="w-full lg:w-[70%]">
+          <table className="max-w-full min-w-full text-left md:border-spacing-5 border-separate ">
             <thead>
-              <tr>
+              <tr className="text-sm md:text-base space-x-2">
                 <th>Image</th>
                 <th>Product</th>
                 <th>Price</th>
@@ -92,7 +92,7 @@ function Cart() {
                       <img
                         src={food.img}
                         alt={food.name}
-                        className="w-12 h-12 md:w-16 md:h-16 rounded-md"
+                        className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-md"
                       />
                     </td>
                     <td className="font-bold">{food.name}</td>

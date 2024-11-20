@@ -49,19 +49,19 @@ function Restaurent() {
 
   return (
     <>
-    <div className="md:flex justify-between px-9 md:px-11 lg:px-6 xl:px-28 py-5">
+    <div className="sm:flex justify-between px-2 md:px-4 py-5 xl:px-28 2xl:px-4">
         <div>
-            <p className="text-4xl font-bold">Restaurent</p>
+            <p className="text-2xl md:text-4xl font-bold">Restaurent</p>
             <p>Lorem ipsum dolor sit amet consectetur</p>
         </div>
-        <div className="flex sm:justify-between gap-6 p,kt-2  items-center">
+        <div className="flex sm:justify-between gap-6 items-center">
             <p className="border border-red-500 rounded-md text-red-500 p-1">Veg & Non Veg</p>
             <p className="border rounded-md p-1 bg-slate-200">Non Veg</p>
             <p className="border rounded-md p-1 bg-slate-200">Pure Veg</p>
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-5 p-5 md:gap-10 md:p-5">
+      <div className="flex flex-wrap justify-center gap-5 sm:p-5 md:gap-10 md:p-5">
         {
             restaurent.map((data, id) =>(
         <div key={id} className="w-80 h-64 rounded-md border">

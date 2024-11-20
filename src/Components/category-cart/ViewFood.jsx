@@ -27,9 +27,9 @@ function ViewFood() {
 
       <div className="grid place-items-center p-2">
         <center className="text-3xl text-red-500 my-5">Tasty Food Yummy!!!!</center>
-        <div key={food.id} className="flex md:w-[500px] gap-10 rounded-md border-2 p-2">
-          <img src={food.img} alt="" className="w-40 h-44 md:h-52 md:w-56 rounded-md" />
-          <div>
+        <div key={food.id} className="grid md:flex items-center gap-10 rounded-md border-2 p-2 md:p-5">
+          <img src={food.img} alt="" className="w-96 h-52 md:h-64 md:w-72 rounded-md" />
+          <div className="md:w-72">
             <p className="text-2xl font-bold md:my-2">Food Details</p>
             <div className="flex justify-between">
               <p>Name:</p>

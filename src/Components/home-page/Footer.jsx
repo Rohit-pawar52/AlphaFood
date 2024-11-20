@@ -9,7 +9,7 @@ import { IoLogoGooglePlaystore } from "react-icons/io5";
 function Footer() {
   return (
     <>
-      <div className="flex justify-between p-2 md:px-16 bg-red-500 text-white">
+      <div className="flex justify-between p-1 md:px-16 bg-red-500 text-white">
         <div className="flex justify-center items-center font-bold">
         <TbAlpha className="text-4xl md:text-7xl md:mt-3"/>
         <div className="leading-3">
@@ -26,7 +26,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 ps-4 gap-2 md:ps-20 bg-[#2e2c2c] text-[#b7b1b1] py-4 md:pt-8">
+      <div className="grid grid-cols-1 md:grid-cols-4 ps-3 gap-2 md:ps-20 bg-[#2e2c2c] text-[#b7b1b1] py-4 md:pt-8">
         <div>
           <p className="text-xl text-white font-semibold">FOR RESTAURENTS</p>
           <p className="border border-red-400 me-64"></p>

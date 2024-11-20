@@ -76,8 +76,8 @@ function UserRegister() {
 
   return (
     <>
-      <div className="container md:grid md:grid-cols-2 px-2 justify-center md:px-28 my-12">
-        <div className="container md:px-10">
+      <div className="container md:grid md:grid-cols-2 px-2 lg:px-28 my-12">
+        <div className="container lg:px-10">
           <div className="hidden md:flex items-center font-extrabold ms-[-10px]">
             <TbAlpha className="text-6xl md:text-7xl md:mt-2 me-[-5px]" />
             <div className="leading-5 md:leading-3">
@@ -147,7 +147,7 @@ function UserRegister() {
             Back
           </Link>
         </div>
-        <div className="container mx-auto md:px-10 md:py-0">
+        <div className="container mx-auto sm:px-2 lg:px-10 md:py-0">
           <img
             src="loginimg.png"
             alt=""
