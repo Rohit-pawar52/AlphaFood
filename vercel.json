@@ -1,13 +1,29 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "Server.js",
-        "use": "@vercel/node"
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"  
       }
-    ],
-    "env": {
-      "MONGODB_URI": "mongodb+srv://rkps2580:ReactDeveloper@alphafood.tixse.mongodb.net/"
+    },
+    {
+      "src": "api/Server.js",
+      "use": "@vercel/node"
     }
-  }
-  
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://rkps2580:ReactDeveloper@alphafood.tixse.mongodb.net/"
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/Server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/$1" 
+    }
+  ]
+}

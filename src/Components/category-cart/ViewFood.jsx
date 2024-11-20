@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 function ViewFood() {
   const location = useLocation();
   const food = location.state || {};
-  console.log(food);
 
   return (
     <>

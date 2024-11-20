@@ -20,7 +20,7 @@ function Navbar() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/foods");
+        const res = await axios.get("https://alpha-food.vercel.app/api/foods");
         setFoods(res.data);
         // console.log(res.data)
       } catch (err) {
